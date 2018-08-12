@@ -1,0 +1,74 @@
+﻿<Window x:Class="OpenUtau.UI.Dialogs.PreferencesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="选项" Height="400" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <TreeView x:Name="treeView" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Stretch" Width="150"
+                  SelectedItemChanged="treeView_SelectedItemChanged">
+            <TreeViewItem Header="常规" IsExpanded="True">
+                <TreeViewItem x:Name="pathsItem" Header="路径" Margin="-12,0,0,0"/>
+            </TreeViewItem>
+            <TreeViewItem Header="外貌" IsExpanded="True">
+                <TreeViewItem x:Name="themesItem" Header="主题" Margin="-12,0,0,0"/>
+                <TreeViewItem Header="媒体" Margin="-12,0,0,0"/>
+            </TreeViewItem>
+            <TreeViewItem Header="音频" IsExpanded="True">
+                <TreeViewItem x:Name="playbackItem" Header="回放" Margin="-12,0,0,0"/>
+                <TreeViewItem x:Name="renderingItem" Header="录制" Margin="-12,0,0,0"/>
+            </TreeViewItem>
+        </TreeView>
+        <Grid x:Name="pathsGrid" Margin="170,2,10,10" Visibility="Hidden">
+            <GroupBox Header="歌手路径" Height="200" VerticalAlignment="Top">
+                <Grid>
+                    <ListBox x:Name="singerPathsList" Margin="10,10,10,42" SelectionChanged="singerPathsList_SelectionChanged"/>
+                    <Button x:Name="singerPathAddButton" Margin="10" Width="75" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="增加"
+                            Focusable="False" Click="singerPathAddButton_Click"/>
+                    <Button x:Name="singerPathRemoveButton" Margin="95,0,0,10" Width="75" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                            Focusable="False" Content="移除" IsEnabled="False" Click="singerPathRemoveButton_Click"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid x:Name="themesGrid" Margin="170,2,10,10" Visibility="Hidden">
+            <TextBlock Text="主题" Margin="10,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ComboBox Width="256" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0">
+                <ComboBoxItem Content="清亮" IsSelected="True"/>
+            </ComboBox>
+        </Grid>
+        <Grid x:Name="playbackGrid" Margin="170,2,10,10" Visibility="Hidden">
+            <TextBlock Text="输出设备" Margin="10,4,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <ComboBox Width="256" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0">
+                <ComboBoxItem Content="WASAPI" IsSelected="True"/>
+                <ComboBoxItem Content="DirectSound"/>
+                <ComboBoxItem Content="WaveOut"/>
+                <ComboBoxItem Content="ASIO"/>
+            </ComboBox>
+        </Grid>
+        <Grid x:Name="renderingGrid" Margin="170,2,10,10" Visibility="Hidden">
+            <GroupBox Header="预览重采样引擎" Height="80" VerticalAlignment="Top">
+                <Grid>
+                    <RadioButton x:Name="previewRatioInternal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,10,0,0" GroupName="preview" Checked="previewEngine_Checked">
+                        内置引擎 (默认)
+                    </RadioButton>
+                    <RadioButton x:Name="previewRatioExternal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,36,0,0" GroupName="preview" Checked="previewEngine_Checked">
+                        外部引擎
+                    </RadioButton>
+                    <ComboBox x:Name="previewEngineCombo" Margin="110,34,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" SelectionChanged="previewEngineCombo_SelectionChanged"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="渲染重采样引擎" Height="80" VerticalAlignment="Top" Margin="0,80,0,0">
+                <Grid>
+                    <RadioButton x:Name="exportRatioInternal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,10,0,0" GroupName="export" Checked="exportEngine_Checked">
+                        内置引擎 (默认)
+                    </RadioButton>
+                    <RadioButton x:Name="exportRatioExternal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,36,0,0" GroupName="export" Checked="exportEngine_Checked">
+                        外部引擎
+                    </RadioButton>
+                    <ComboBox x:Name="exportEngineCombo" Margin="110,34,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" SelectionChanged="exportEngineCombo_SelectionChanged"/>
+                </Grid>
+            </GroupBox>
+            <TextBlock Margin="9,162,0,0" TextWrapping="Wrap">
+                注意：要使用外部重采样器，请在OpenUTAU安装路径上将重采样器DLL或EXE文件添加到重采样器文件夹中。
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

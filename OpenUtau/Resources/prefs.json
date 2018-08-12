@@ -1,0 +1,16 @@
+﻿{
+    "MainWidth": 1280,
+    "MainHeight": 720,
+    "MainMaximized": false,
+    "MidiWidth": 1024,
+    "MidiHeight": 768,
+	"MidiMaximized": false,
+    "UndoLimit": 100,
+    "SingerSearchPaths": [
+        "歌手"
+    ],
+    "InternalEnginePreview": true,
+    "InternalEngineExport": true,
+    "ExternalPreviewEngine": "",
+    "ExternalExportEngine": ""
+}
